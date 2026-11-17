@@ -1,0 +1,10 @@
+FROM alpine:latest
+
+# Устанавливаем util-linux для получения полноценной утилиты flock
+RUN apk add --no-cache util-linux
+
+WORKDIR /app
+COPY worker.sh .
+RUN chmod +x worker.sh
+
+CMD ["/app/worker.sh"]
